@@ -15,14 +15,15 @@
 using namespace std;
 
 int main(){
-    int n,res,M;
+    int n,M;
+    long res=0;
     cin>>n>>M;
     int a[n];
     for(int &x:a) cin>>x;
     sort(a,a+n); //Sap xep a[0] <= a[1] <= ... <= a[n-1]
     for(int i=1;i<n;i++){
-        auto *p=upper_bound(a,a+i,M-a[i]);
+        auto *p=upper_bound(a,a+i,M-a[i]); //logn
         res+=p-a;
     }
     cout<<res;
-}
+}//O(logn)
